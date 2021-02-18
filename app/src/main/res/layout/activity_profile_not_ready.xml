@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"></import>
+
+        <variable
+            name="viewmodel"
+            type="com.tingting.ver01.viewModel.ProfileTeamInfoViewModel" />
+
+        <variable
+            name="teaminfoItem"
+            type="com.tingting.ver01.model.team.lookMyTeamInfoDetail.LookMyTeamInfoDetailResponse" />
+
+    </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/header"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:background="@color/tingtingMain"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/backBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/back_white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/teamLeave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="팀 떠나기"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.949"
+                    app:layout_constraintStart_toEndOf="@+id/backBtn"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.18">
+
+                </TextView>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/teamName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:text="@{viewmodel.data.data.teamInfo.name}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.387">
+
+                </TextView>
+
+                <ImageView
+                    android:visibility="@{safeUnbox(viewmodel.data.data.teamInfo.hasPassword) ? View.VISIBLE : View.GONE}"
+                    android:id="@+id/lockImg"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:src="@drawable/lock"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.067"
+                    app:layout_constraintStart_toEndOf="@+id/teamName"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.45">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/teamInfoExplain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:maxWidth="200dp"
+                    android:textColor="@color/white"
+                    android:textSize="13dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/teamName"
+                    app:layout_constraintTop_toBottomOf="@+id/teamName"></TextView>
+
+                <TextView
+                    android:id="@+id/tagInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:maxWidth="600dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="13dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/teamInfoExplain"
+                    app:layout_constraintTop_toBottomOf="@+id/teamInfoExplain"></TextView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:weightSum="1"
+                android:layout_marginLeft="18dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="20dp"
+                  android:textSize="17dp"
+                  android:textColor="@color/black"
+                  android:text="팀원 목록">
+              </TextView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/teamMemberRecyclerView"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:textSize="17dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="20dp"
+                    android:text="오픈 카카오톡 주소">
+
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/kakaoUrl"
+                        android:text="@{viewmodel.data.data.teamInfo.chat_address}"
+                        android:background="@drawable/white_gray_whole_small_radius"
+                        android:layout_gravity="center"
+                        android:lines="1"
+                        android:gravity="center_vertical"
+                        android:layout_width="250dp"
+                        android:layout_height="30dp">
+
+                    </TextView>
+
+                    <TextView
+                        android:textColor="@color/white"
+                     android:background="@drawable/round_edge_pink_4"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="복사"
+                        android:id="@+id/copyBtn"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.2"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp">
+                    </TextView>
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:background="@drawable/round_edge_pink_4"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="입장"
+                        android:id="@+id/participateChatRoom"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.2"
+                        android:layout_width="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_height="30dp">
+                    </TextView>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:textSize="17dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:text="비밀번호">
+                </TextView>
+
+                <TextView
+
+                    android:text="@{teaminfoItem.data.teamInfo.password}"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/white_gray_whole_small_radius"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_weight="0.6"
+                    android:layout_height="0dp">
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/reviseTeam"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginRight="27dp"
+                    android:text="수정하기"
+                    android:textColor="@color/white"
+                    android:background="@drawable/search_team_make_team"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </Button>
+            </LinearLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<data>
+    <import type="android.view.View"></import>
+
+    <variable
+        name="searchTeamItem"
+        type="com.tingting.ver01.model.team.lookTeamList.TeamResponse.Data.Team" />
+</data>
+
+<FrameLayout
+    android:id="@+id/frame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:paddingBottom="10dp"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/wrapLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/box"
+            android:layout_marginBottom="5dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/teamRegion"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left|center_vertical"
+                android:text="@{searchTeamItem.place}"
+                android:textColor="@color/darkGray"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/box"
+                app:layout_constraintRight_toLeftOf="@+id/slash"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/slash"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/teamRegion"
+                android:text="|"
+                android:textColor="@color/darkGray"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/teamRegion"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/teamRegion"
+                app:layout_constraintRight_toLeftOf="@+id/teamName"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/teamName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/slash"
+                android:text="@{searchTeamItem.name}"
+                android:textColor="@color/tingtingMain"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/slash"
+                app:layout_constraintRight_toLeftOf="@+id/lock"
+                app:layout_constraintStart_toEndOf="@+id/slash"
+                app:layout_constraintTop_toTopOf="@+id/box"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/lock"
+                android:visibility="@{safeUnbox(searchTeamItem.hasPassword) ? View.VISIBLE : View.GONE}"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/lock_pink"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/teamName"
+                app:layout_constraintRight_toRightOf="@+id/box"
+                app:layout_constraintStart_toEndOf="@+id/teamName"
+                app:layout_constraintTop_toTopOf="@+id/box">
+
+            </ImageView>
+
+<!--            <TextView-->
+<!--                android:id="@+id/currentNumberInfo"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:textColor="@color/darkGray"-->
+<!--                android:textSize="14dp"-->
+<!--                android:layout_marginLeft="1dp"-->
+<!--                android:layout_marginRight="1dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintLeft_toRightOf="@+id/lock"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintVertical_bias="0.5" />-->
+
+            <TextView
+                android:id="@+id/totalNumberInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="16dp"
+                android:textColor="@color/darkGray"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.02"
+                app:layout_constraintLeft_toRightOf="@+id/lock"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_height="15dp">
+
+            <TextView
+                android:textColor="@color/darkGray"
+                android:textSize="12dp"
+                android:id="@+id/tags"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+            </TextView>
+        </LinearLayout>
+        <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:src="@drawable/nullpicture"
+                    android:id="@+id/img_m4First"
+                    android:layout_width="@dimen/current_matching_team_item4_picture_width"
+                    android:layout_height="@dimen/current_matching_team_item_width" />
+
+                <ImageView
+                    android:src="@drawable/nullpicture"
+                    android:id="@+id/img_m4Sec"
+                    android:layout_width="@dimen/current_matching_team_item_width"
+                    android:layout_height="@dimen/current_matching_team_item_width"
+                    android:layout_gravity="top"
+                    android:layout_marginLeft="30dp" />
+
+                <ImageView
+                    android:src="@drawable/nullpicture"
+                    android:id="@+id/img_m4Third"
+                    android:layout_width="@dimen/current_matching_team_item_width"
+                    android:layout_height="@dimen/current_matching_team_item_width"
+
+                    android:layout_marginLeft="55dp" />
+
+                <ImageView
+                    android:src="@drawable/nullpicture"
+                    android:id="@+id/img_m4Fourth"
+                    android:layout_width="@dimen/current_matching_team_item_width"
+                    android:layout_height="@dimen/current_matching_team_item_width"
+                    android:layout_marginLeft="80dp" />
+            </FrameLayout>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/arrowToDetail"
+        android:layout_gravity="center_vertical|right"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:srcCompat="@drawable/next" />
+</FrameLayout>
+</layout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="tingtingMain">#FF7D70</color>
+    <color name="salmon">#ff6f61</color>
+    <color name="orangeish">#ff8c48</color>
+    <color name="salmonTwo">#ff7d70</color>
+    <color name="salmonThree">#ff9270</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#dcdcdc</color>
+    <color name="gray2">#B6B6B6</color>
+    <color name="subtext">#707070</color>
+    <color name="maintext">#0a0a0a</color>
+    <color name="tingtingSub">#D5FFABA2</color>
+    <color name="textBG">#f6f6f6</color>
+    <color name="darkGray">#B7B7B7</color>
+    <color name="blue">#cf1372f1</color>
+    <color name="green">#349451</color>
+    <color name="whiteTwo">#dddddd</color>
+    <color name="veryLightPink">#bdbdbd</color>
+    <color name="brownishGrey">#707070</color>
+    <color name="active_dots">#FFFAFA</color>
+    <color name="inactive_dots">#83878B</color>
+</resources>

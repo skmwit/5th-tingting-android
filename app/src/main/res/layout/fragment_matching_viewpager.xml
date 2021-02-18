@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.tingting.ver01.viewModel.FirstPagerFragmentViewModel" />
+        <variable
+            name="teamMemberData"
+            type="com.tingting.ver01.model.profile.GetTeammberProfileResponse" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"></ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_gray_bottom"
+        android:layout_marginTop="20dp">
+
+        <TextView
+
+            android:id="@+id/teammemberName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:text="@{viewmodel.indivisualProfile.data.userInfo.name}"
+            android:textSize="18dp"
+            >
+        </TextView>
+
+        <TextView
+            android:text="@{String.valueOf(viewmodel.indivisualProfile.data.userInfo.height) +`cm`}"
+            android:id="@+id/teammemberHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="18dp">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:text="@{String.valueOf(viewmodel.indivisualProfile.data.userInfo.schoolName)}"
+            android:id="@+id/teammemberSchool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/teammemberAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:textSize="18dp">
+        </TextView>
+
+
+
+    </LinearLayout>
+</LinearLayout>
+</layout>
